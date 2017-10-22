@@ -1,5 +1,6 @@
 package com.visualsearch.visenze.impl;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -19,23 +20,22 @@ import com.visenze.visearch.ViSearch;
  */
 public class VisualSearchImpl {
 	
-	private String ACCESS_KEY = "2922ca9709bb6f648b3cc0c95dd25453";
-	private String SECRET_KEY = "5ff65d3b5b8f5262c82e5fb4b6c1cc79";
-    
+	private static String ACCESS_KEY = "2922ca9709bb6f648b3cc0c95dd25453";
+	private static String SECRET_KEY = "5ff65d3b5b8f5262c82e5fb4b6c1cc79";
+	private static ViSearch client = new ViSearch(ACCESS_KEY, SECRET_KEY);
+	
+	public VisualSearchImpl() {
+		// TODO Auto-generated constructor stub
+	}
 	
 	/**
 	 * 
 	 */			
-	public String searchByImage(String requestData) {	
+	public String searchForSimilarRecommendations(String im_name) {	
 		
-		if(requestData==null) {
-			return "input data is not correct";
-		}
-		
-		ViSearch client = new ViSearch(ACCESS_KEY, SECRET_KEY);
-		
+				
 		//Set the required filters.
-		SearchParams params = setFilters(requestData);
+		SearchParams params = setFilters(im_name);
 		
 		PagedSearchResult searchResult = client.search(params);
 		
@@ -56,6 +56,30 @@ public class VisualSearchImpl {
 		return searchResult.getRawJson();
 	}
 
+	
+	public String searchByUploadedImage (){
+		//Searching an uploaded image file
+		File imageFile = new File("C:/Users/Public/Pictures/Sample Pictures/Penguins.jpg");
+		UploadSearchParams params = new UploadSearchParams(imageFile);
+		params.setFacet(true);
+		//System.out.println(params.getImageFile());
+		//PagedSearchResult searchResult = client.uploadSearch(params);
+		//if(searchResult.getErrorMessage()!= null) {
+		//	return searchResult.getErrorMessage();
+		//}
+		//System.out.println(searchResult.getRawJson());
+		
+		
+		//Searching a publicly accessible image URL
+		String url = "http://www.ikea.com/us/en/images/products/billy-bookcase-white__0252367_PE391149_S4.JPG";
+		UploadSearchParams params2 = new UploadSearchParams(url);
+		
+		PagedSearchResult searchResult2 = client.uploadSearch(params);
+		System.out.println(params2.getImageUrl());
+		
+		return "";
+	}
+	
 
 	/**
 	 * @param requestData
@@ -80,7 +104,8 @@ public class VisualSearchImpl {
 
 	public static void main (String args[]) {	
 		VisualSearchImpl impl = new VisualSearchImpl();
-		impl.searchByImage("malm100");		
+		//impl.searchForSimilarRecommendations("malm100");	
+		System.out.println(impl.searchByUploadedImage());
 	}
 	
 	/**

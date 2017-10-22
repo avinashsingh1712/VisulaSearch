@@ -18,7 +18,7 @@ public class SearchWsImpl {
 	public Response getMsg(@PathParam("param") String searchInput) {
 		VisualSearchImpl vs = new VisualSearchImpl();
 				
-		return Response.status(200).entity(vs.searchByImage(searchInput)).build();
+		return Response.status(200).entity(vs.searchForSimilarRecommendations(searchInput)).build();
  
 	}
  
