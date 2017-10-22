@@ -50,7 +50,7 @@ public class VisualSearchImpl {
 		List<ImageResult> result = searchResult.getResult();
 		for (ImageResult imageResult : result) {			
 			ImageResult ir =imageResult;
-			System.out.println(ir.getImName());
+		//	System.out.println(ir.getImName());
 		}
 				
 		return searchResult.getRawJson();
@@ -87,25 +87,32 @@ public class VisualSearchImpl {
 	 */
 	private SearchParams setFilters(String requestData) {
 		float scoreMin = 0.60F;
-		float scoreMax = 1.0F;		
+		float scoreMax = 1.0F;	
+		
+		List<String> fl = new ArrayList<String>();
+		fl.add(requestData);
 		
 		//SearchParams params = new SearchParams("malm2");
 		SearchParams params = new SearchParams(requestData);
-		params.setLimit(10);
+		params.setLimit(30);
+		params.setPage(1);
 		params.setScore(true);
 		params.setScoreMin(scoreMin);
 		params.setScoreMax(scoreMax);
 		params.setFacet(true);
-		params.setFl(null);
-		params.setQInfo(true);
+		params.setFl(fl);
+		params.setGetAllFl(true); // to get all the image URLS
+		params.setQInfo(true);// To get the main image URL
 		return params;
+		
+		//curl "http://visearch.visenze.com/search?im_name=malm100&page=1&limit=30&score=true&fl=im_url&dedup=false" \-u access_key:secret_key
 	}
 	
 
 	public static void main (String args[]) {	
 		VisualSearchImpl impl = new VisualSearchImpl();
-		//impl.searchForSimilarRecommendations("malm100");	
-		System.out.println(impl.searchByUploadedImage());
+		impl.searchForSimilarRecommendations("malm100");	
+		//System.out.println(impl.searchByUploadedImage());
 	}
 	
 	/**
