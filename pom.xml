@@ -34,11 +34,16 @@
 			<artifactId>jersey-server</artifactId>
 			<version>1.8</version>
 		</dependency>
+		<dependency>
+			<groupId>com.sun.jersey</groupId>
+			<artifactId>jersey-client</artifactId>
+			<version>1.8</version>
+		</dependency>
 
 	</dependencies>
 
 	<build>
-		<finalName>VisualSearchPOC</finalName>
+		<finalName>VisualSearch</finalName>
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>

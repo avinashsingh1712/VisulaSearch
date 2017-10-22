@@ -2,18 +2,15 @@ package com.visualsearch.visenze.impl;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import com.visenze.visearch.Facet;
 import com.visenze.visearch.Image;
+import com.visenze.visearch.ImageResult;
 import com.visenze.visearch.PagedSearchResult;
 import com.visenze.visearch.SearchParams;
 import com.visenze.visearch.UploadSearchParams;
 import com.visenze.visearch.ViSearch;
-
-import sun.applet.Main;
 
 /**
  * 
@@ -35,45 +32,55 @@ public class VisualSearchImpl {
 			return "input data is not correct";
 		}
 		
-		float scoreMin = 0.5F;
-		float scoreMax = 1F;
 		ViSearch client = new ViSearch(ACCESS_KEY, SECRET_KEY);
 		
-		//SearchParams params = new SearchParams("malm2");
-		SearchParams params = new SearchParams(requestData);
-		params.setLimit(100);
-		params.setScoreMin(scoreMin);
-		params.setScoreMax(scoreMax);
-		PagedSearchResult searchResult = client.search(params.setLimit(100));
+		//Set the required filters.
+		SearchParams params = setFilters(requestData);
+		
+		PagedSearchResult searchResult = client.search(params);
 		
 		String errorMessage = searchResult.getErrorMessage();
 		if(errorMessage != null) {
 			return errorMessage;
 		}
 		
-		System.out.println("Search im id - "+searchResult.getImId());
 		System.out.println("Search data list - "+searchResult.getRawJson());
-		System.out.println("Search data result - "+searchResult.getRawResponseMessage());
-		System.out.println("Search total no. - "+searchResult.getTotal());
+		//System.out.println("Search image result. - "+searchResult.getResult());
 		
-		Map<String, String> headers = searchResult.getHeaders();
-		Iterator itr= headers.entrySet().iterator();
-		while (itr.hasNext()) {
-			System.out.println(itr.next());
+		List<ImageResult> result = searchResult.getResult();
+		for (ImageResult imageResult : result) {			
+			ImageResult ir =imageResult;
+			System.out.println(ir.getImName());
 		}
-		
-		List<Facet> list = searchResult.getFacets();
-		/*for (Facet facet : list) {
-			System.out.println("list data - "+facet);
-		}*/
-		System.out.println("Search data result - "+searchResult.getRawResponseMessage());
+				
 		return searchResult.getRawJson();
+	}
+
+
+	/**
+	 * @param requestData
+	 * @return
+	 */
+	private SearchParams setFilters(String requestData) {
+		float scoreMin = 0.60F;
+		float scoreMax = 1.0F;		
+		
+		//SearchParams params = new SearchParams("malm2");
+		SearchParams params = new SearchParams(requestData);
+		params.setLimit(10);
+		params.setScore(true);
+		params.setScoreMin(scoreMin);
+		params.setScoreMax(scoreMax);
+		params.setFacet(true);
+		params.setFl(null);
+		params.setQInfo(true);
+		return params;
 	}
 	
 
 	public static void main (String args[]) {	
 		VisualSearchImpl impl = new VisualSearchImpl();
-		impl.searchByImage("malm2");		
+		impl.searchByImage("malm100");		
 	}
 	
 	/**
