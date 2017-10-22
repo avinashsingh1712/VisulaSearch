@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: VisualSearch
+Bundle-SymbolicName: VisualSearch
+Bundle-Version: 1.0.0.qualifier
+Bundle-ClassPath: VisualSearch.jar,
+ avinasin/.m2/repository/com/sun/jersey/jersey-core/1.8/jersey-core-1.8.jar
+Export-Package: com.visualsearch.visenze.impl,
+ com.visualsearch.ws.impl
