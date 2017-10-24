@@ -1,0 +1,105 @@
+div.inline { float:left; margin-right: 20px;border:1px solid green;}
+div.inline1 { float:left; margin-right: 20px;border:1px solid pink;}
+div.internal{height:100px;width:100px;border:1px solid red;}
+/* .result{height:50px;width:20px;border:1px solid green;} */
+.image-upload > input
+{
+    display: none;
+    
+}
+
+.image-upload img
+{
+    width: 30px;
+    cursor: pointer;
+    margin-bottom: -10px;
+}
+#allContent {
+    font-family: Verdana,sans-serif;
+    background-color: #FFF;
+    width: 80%;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    margin: 7px auto;
+    text-align: left;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+	border:1px solid red;
+	
+}
+#allContent #mainPadding {
+    padding: .63em 1.02em;
+    background-color: #FFF;
+   
+    
+    overflow: none;
+}
+#searchName{
+    margin-left: 230px;
+    width: 20%;
+    height: 30px;
+}
+.mainImageCont{
+	height:200px;
+	width:200px;
+}
+ul {
+    list-style-type: none;
+    margin-top: 15px;
+    padding: 0;
+    overflow: hidden;
+    background-color: #0051ba;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 9px 6px;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+li a:hover:not(.active) {
+    background-color: #525e6d;
+}
+
+.active {
+    background-color: #36395d;
+}
+/*Image Upload preview  */
+.product_holder1 {
+    height: 265px;
+    border: 1px solid white;
+    background: #f6f4ee;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 25px;
+}
+#more_container{
+height:200px;
+width:420px;
+float:right;
+font-size:20px;
+}
+#more{
+    width: 200px;
+    height: 54px;
+    border-radius: 9px;
+    background-color: #3a7585;
+    font-size: 20px;
+	color:white;
+	margin-top: 85px;
+}
+    footer {
+            background-color: #333;
+            width: 100%;
+            bottom: 0;
+            position: fixed;
+        }
