@@ -1,7 +1,7 @@
 div.inline { float:left; margin-right: 20px;border:1px solid green;}
 div.inline1 { float:left; margin-right: 20px;border:1px solid pink;}
 div.internal{height:100px;width:100px;border:1px solid red;}
-/* .result{height:50px;width:20px;border:1px solid green;} */
+
 .image-upload > input
 {
     display: none;
@@ -73,33 +73,3 @@ li a:hover:not(.active) {
 .active {
     background-color: #36395d;
 }
-/*Image Upload preview  */
-.product_holder1 {
-    height: 265px;
-    border: 1px solid white;
-    background: #f6f4ee;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 25px;
-}
-#more_container{
-height:200px;
-width:420px;
-float:right;
-font-size:20px;
-}
-#more{
-    width: 200px;
-    height: 54px;
-    border-radius: 9px;
-    background-color: #3a7585;
-    font-size: 20px;
-	color:white;
-	margin-top: 85px;
-}
-    footer {
-            background-color: #333;
-            width: 100%;
-            bottom: 0;
-            position: fixed;
-        }
