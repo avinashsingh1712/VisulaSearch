@@ -3,9 +3,7 @@ function loadMain(){
 	var preview = document.getElementById("preview");
 	var name = $("#searchName").val();
 	$.ajax({url: "search/searchByImage/"+name, success: function(response){
-		console.log(response);
-        //$("mainDiv").html(result);
-		$.each(response, function(key , value){
+			$.each(response, function(key , value){
 			    if(key == "qinfo"){
 			    	var iDiv1 = document.createElement('div');
 					iDiv1.className = 'inline';
@@ -27,8 +25,6 @@ function loadMain(){
 			    		 
 							oImg1.setAttribute('src', v1);
 							oImg1.setAttribute('alt', value.im_name);
-							/*oImg1.setAttribute('height', '300');
-							oImg1.setAttribute('width', '200');*/
 							oImg1.setAttribute("class","mainImageCont");
 			    	  }
 			      });
@@ -41,9 +37,7 @@ function loadMain(){
 			   
 				if(key == "result"){
 					 mainDiv.innerHTML ="";
-					 /*var iDiv2 = document.createElement('div');
-						iDiv2.className = 'result';*/
-					$.each(value, function(key1, value1){
+						$.each(value, function(key1, value1){
 						var iDiv = document.createElement('div');
 						iDiv.className = 'inline1';
 						
@@ -62,16 +56,7 @@ function loadMain(){
 								
 								iDiv.appendChild(text2);
 							}
-							/*if(k == "im_url"){
-								var oImg = document.createElement("img");
-								oImg.setAttribute('src', v);
-								oImg.setAttribute('alt', value1.im_name);
-								oImg.setAttribute('height', '100');
-								oImg.setAttribute('width', '100');
-								iDiv.appendChild(oImg);
-							}*/
-							
-							
+												
 							});
 					    
 						mainDiv.appendChild(iDiv);
@@ -84,42 +69,6 @@ function loadMain(){
     }});
 	
 	
-	/*var elem = document.getElementByClass('inline1');
-	  var ausgabe = document.getElementByClass('inline1');
-	  elem.addEventListener('mouseover', mouseOver);
-	  elem.addEventListener('mouseout', mouseOut);
-
-	  function mouseOver() {
-	    ausgabe.innerHTML = 'Ich bin dynamisch!';
-	    elem.innerHTML = 'Drüber!';
-	  }
-
-	  function mouseOut() {
-	    ausgabe.innerHTML = ' ';
-		elem.innerHTML = 'Wieder weg!';
-	  }*/
 	
-	/*for(var i = 1 ; i <=3;  i++){
-		var iDiv = document.createElement('div');
-		iDiv.className = 'inline';
-		
-		var oImg = document.createElement("img");
-		oImg.setAttribute('src', 'img/img'+i+'.jpg');
-		oImg.setAttribute('alt', 'img'+i+'');
-		oImg.setAttribute('height', '100');
-		oImg.setAttribute('width', '100');
-		iDiv.appendChild(oImg);
-		
-		var text1 = document.createElement('p');
-		text1.innerHTML = "Hello"+i;
-		iDiv.appendChild(text1);
-		
-		var text2 = document.createElement('p');
-		text2.innerHTML = "Hi"+i;
-		iDiv.appendChild(text2);
-		
-
-		mainDiv.appendChild(iDiv);
-	}*/
 	
 	}
