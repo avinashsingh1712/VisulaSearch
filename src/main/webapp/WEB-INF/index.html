@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Visual Search</title>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript" src="js/trial.js"></script>
+<link rel="stylesheet" type="text/css" href="CSS/style.css">
+<script type="text/javascript">
+
+</script>
+
+</head>
+<body>
+<div id="allContent">
+<div id="mainPadding">
+<form>
+<div id="logo"><img src="images/ikea.gif" style="height:40px;margin-top:10px"/>
+<input type ="search" id="searchName" placeholder="Search by Name" onkeypress="validateOnEnter(event)"/>
+<div class="image-upload"style="display: inline-block;">
+    <label for="file-input">
+        <img src="images/Camera-icon.png"/>
+    </label>
+
+    <input id="file-input" type="file"/>
+</div>
+<input type="button" value="Search" onclick="loadMain();" id = "txtSearch"/>
+
+</div> 
+<!-- <input type ="search" id="searchName"></input>
+<div class="image-upload"style="display: inline-block;">
+    <label for="file-input">
+        <img src="images/Camera-icon.png"/>
+    </label>
+
+    <input id="file-input" type="file"/>
+</div>
+<input type="button" value="Search"/> 
+<!--  <div id="menu_bar">menu bar</div>-->
+
+<ul>
+  <li><a class="active" href="#">Offers</a></li>
+  <li><a href="#">New</a></li>
+  <li><a href="#">IDEAS</a></li>
+  <li><a href="#">Living room</a></li>
+</ul>
+
+<div id="preview_left">
+<div class="preview_left_cont">Search Results</div>
+</div>
+<div id="preview" style="height:300px;width: 75%;float: left;"></div><br />
+<hr style="margin-top:0px;margin-bottom: 0px;width: 85%;float: left;">
+<div id="left2"></div>
+<div id="mainDiv"> </div>
+
+</form>
+</div>
+</div>
+<!-- <footer>
+    footer
+    </footer> -->
+
+</body>
+</html>
