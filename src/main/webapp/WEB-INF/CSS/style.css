@@ -1,7 +1,41 @@
-div.inline { float:left; margin-right: 20px;border:1px solid green;}
-div.inline1 { float:left; margin-right: 20px;border:1px solid pink;}
-div.internal{height:100px;width:100px;border:1px solid red;}
-
+div.inline { 
+	float: left;
+    margin-left: -1px;
+    border: 9px solid darkgrey;
+    width: 250px;
+    background-color: #f3f7ee;
+    border-radius: 2px;
+    
+    }
+    div.inline>p{
+    font-size: 18px;
+    text-transform: uppercase;
+    text-align: center;
+    }
+/* div.inline1 { 
+	float: left;
+    margin-right: 20px;
+    border: 1px solid #9fd4ca;
+    margin-top: 10px;
+    height: 220px;
+    width: 160px;
+    text-align: center;
+    background-color: #bbbaba;
+    border-radius: 10px;
+    } */
+    div.inline1 {
+    float: left;
+    border-left: 1px solid darkgrey;
+    border-bottom: 1px solid darkgrey;
+    height: 220px;
+    width: 160px;
+    text-align: center;
+    margin-left: -1px;
+    
+}
+    
+/*div.internal{height:100px;width:100px;border:1px solid red;}
+ .result{height:50px;width:20px;border:1px solid green;} */
 .image-upload > input
 {
     display: none;
@@ -26,7 +60,7 @@ div.internal{height:100px;width:100px;border:1px solid red;}
     margin-left: auto;
     margin-right: auto;
     overflow: hidden;
-	border:1px solid red;
+	/* border:1px solid red; */
 	
 }
 #allContent #mainPadding {
@@ -43,7 +77,12 @@ div.internal{height:100px;width:100px;border:1px solid red;}
 }
 .mainImageCont{
 	height:200px;
-	width:200px;
+	width:250px;
+}
+.resultImageCont{
+	height:130px;
+	width:130px;
+	padding-top:10px;
 }
 ul {
     list-style-type: none;
@@ -73,3 +112,60 @@ li a:hover:not(.active) {
 .active {
     background-color: #36395d;
 }
+#mainDiv{
+	/* margin-left: 12%; 
+    margin-right: 12%;*/
+    /* background-color: gray;
+    position: absolute; */
+    width:75%;
+    float:left;
+   
+}
+.mainDiv_left{
+	border-left: 1px solid darkgrey;
+	border-right: 1px solid darkgrey;
+    width: 20%;
+    height:100px;
+    float: left;  
+}
+#preview_left{
+	border-top: 1px solid darkgrey;
+	border-right: 1px solid darkgrey;
+	width: 20%;
+    height:316px;
+    float: left;
+}
+.preview_left_cont{
+	font-weight: bolder;
+    text-align: center;
+}
+/*Image Upload preview  */
+.product_holder1 {
+    height: 265px;
+    border: 1px solid white;
+    background: #f6f4ee;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 25px;
+}
+#more_container{
+height:200px;
+width:420px;
+float:right;
+font-size:20px;
+}
+#more{
+    width: 200px;
+    height: 54px;
+    border-radius: 9px;
+    background-color: #3a7585;
+    font-size: 20px;
+	color:white;
+	margin-top: 85px;
+}
+    footer {
+            background-color: #333;
+            width: 100%;
+            bottom: 0;
+            position: fixed;
+        }
