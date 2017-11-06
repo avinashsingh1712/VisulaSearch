@@ -24,27 +24,51 @@ public class VisualSearchImpl {
 	private static String SECRET_KEY = "5ff65d3b5b8f5262c82e5fb4b6c1cc79";
 	private static ViSearch client = new ViSearch(ACCESS_KEY, SECRET_KEY);
 
+		
+	
 	/**
-	 * 
-	 * @param request
-	 * @return
+	 * This will search the similar images for given image.
+	 * @return String
 	 */
-	public String search(String request) {
-		String response = null;
-		if (!request.contains("http")) {
-			response = searchForSimilarRecommendations(request);
-		} else {
-			response = searchByUploadedImageAndURL(request);
+	public String searchByImage (String imageUrl) {
+		
+		File imageFile = new File(imageUrl);
+		UploadSearchParams params = new UploadSearchParams(imageFile);
+		
+		float scoreMin = 0.60F;
+		float scoreMax = 1.0F;
+		params.setLimit(30);
+		params.setPage(1);
+		params.setScore(true);
+		params.setScoreMin(scoreMin);
+		params.setScoreMax(scoreMax);
+		params.setFacet(true);		
+		List<String> fl = new ArrayList<String>();
+		fl.add(imageFile.getAbsolutePath());
+		params.setFl(fl);
+		params.setGetAllFl(true); // to get all the image URLS
+		params.setQInfo(true);// To get the main image URL
+		
+		PagedSearchResult searchResult = client.uploadSearch(params);
+		
+
+		String errorMessage = searchResult.getErrorMessage();
+		if (errorMessage != null) {
+			return errorMessage;
 		}
-		return response;
+		
+		System.out.println("Search data list - " + searchResult.getRawJson());
+		
+		return searchResult.getRawJson();
 	}
+	
 
 	/**
 	 * 
-	 * @param im_name
+	 * @param this will search the similar images by "im_name"
 	 * @return
 	 */
-	private String searchForSimilarRecommendations(String im_name) {
+	public String searchByName(String im_name) {
 
 		// Set the required filters.
 		SearchParams params = setFiltersForSimilarRecommendations(im_name);
@@ -68,8 +92,15 @@ public class VisualSearchImpl {
 
 		return searchResult.getRawJson();
 	}
-
-	private String searchByUploadedImageAndURL(String url) {
+	
+	
+	
+	/**
+	 * This will search the image with URL
+	 * @param url
+	 * @return
+	 */
+	public String searchByUrl(String url) {
 		// Searching an uploaded image file
 		File imageFile = new File("C:/Users/Public/Pictures/Sample Pictures/Penguins.jpg");
 		//String url = "http://www.ikea.com/us/en/images/products/billy-bookcase-white__0252367_PE391149_S4.JPG";
@@ -87,6 +118,7 @@ public class VisualSearchImpl {
 
 		PagedSearchResult searchResult2 = client.uploadSearch(params);
 		System.out.println(searchResult2.getRawJson());
+		System.out.println(searchResult2.getErrorMessage());
 
 		return "";
 	}
@@ -139,8 +171,10 @@ public class VisualSearchImpl {
 
 	public static void main(String args[]) {
 		VisualSearchImpl impl = new VisualSearchImpl();
-		// impl.searchForSimilarRecommendations("malm100");
-		System.out.println(impl.searchByUploadedImageAndURL(""));
+		//impl.searchForSimilarRecommendations("malm100");
+		//String url = "http://www.ikea.com/us/en/images/products/billy-bookcase-white__0252367_PE391149_S4.JPG";
+		//impl.searchByUploadedImageAndURL(url);
+		impl.searchByImage("C:/Users/Public/Pictures/Sample Pictures/Penguins.jpg");
 	}
 
 	/**
