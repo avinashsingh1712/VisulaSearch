@@ -23,6 +23,8 @@ public class VisualSearchImpl {
 	private static String ACCESS_KEY = "2922ca9709bb6f648b3cc0c95dd25453";
 	private static String SECRET_KEY = "5ff65d3b5b8f5262c82e5fb4b6c1cc79";
 	private static ViSearch client = new ViSearch(ACCESS_KEY, SECRET_KEY);
+	private float scoreMin = 0.90F;
+	private float scoreMax = 1.0F;
 
 		
 	
@@ -35,8 +37,7 @@ public class VisualSearchImpl {
 		File imageFile = new File(imageUrl);
 		UploadSearchParams params = new UploadSearchParams(imageFile);
 		
-		float scoreMin = 0.60F;
-		float scoreMax = 1.0F;
+		//  configurable--
 		params.setLimit(30);
 		params.setPage(1);
 		params.setScore(true);
@@ -149,9 +150,6 @@ public class VisualSearchImpl {
 	private SearchParams setFiltersForSimilarRecommendations(String requestData) {
 
 		SearchParams params = new SearchParams(requestData);
-
-		float scoreMin = 0.60F;
-		float scoreMax = 1.0F;
 
 		List<String> fl = new ArrayList<String>();
 		fl.add(requestData);

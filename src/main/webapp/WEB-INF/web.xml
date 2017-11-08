@@ -16,6 +16,6 @@
 	<servlet-mapping>
 		<servlet-name>jersey-serlvet</servlet-name>
 		<url-pattern>/search/*</url-pattern>
-	</servlet-mapping>
+	</servlet-mapping>	
 
 </web-app>
