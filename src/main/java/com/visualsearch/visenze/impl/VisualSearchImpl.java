@@ -35,14 +35,14 @@ public class VisualSearchImpl {
 	public String searchByImage (String imageUrl) {
 		
 		File imageFile = new File(imageUrl);
-		UploadSearchParams params = new UploadSearchParams(imageFile);
+		UploadSearchParams params = new UploadSearchParams(imageFile);// how its reading the image without sending the file.
 		
 		//  configurable--
 		params.setLimit(30);
 		params.setPage(1);
 		params.setScore(true);
-		params.setScoreMin(scoreMin);
-		params.setScoreMax(scoreMax);
+		//params.setScoreMin(scoreMin);
+		//params.setScoreMax(scoreMax);
 		params.setFacet(true);		
 		List<String> fl = new ArrayList<String>();
 		fl.add(imageFile.getAbsolutePath());
