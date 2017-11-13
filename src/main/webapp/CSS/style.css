@@ -173,3 +173,11 @@ font-size:20px;
             bottom: 0;
             position: fixed;
         }
+#preview1{
+	/* height: 300px;
+    width: 30%;
+    float: right; */
+    float: left;
+    margin-left: 100px;
+    margin-top: 100px;
+}
