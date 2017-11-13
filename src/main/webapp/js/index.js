@@ -1,10 +1,30 @@
 function loadMain() {
-    console.log("imageuoloD");
+    
 	var inputImageFile = document.getElementById("file-input");
 	var maindiv = document.getElementById("mainDiv");
 	var preview = document.getElementById("preview");
 	var name = $("#searchName").val();
-    console.log("imageuoloD"+ inputImageFile);
+   // console.log("imageuoloD"+ $("#file-input").val());
+ /*   var tmppath = URL.createObjectURL(event.target.files[0]);
+	  console.log("hell" +tmppath);*/
+    var xhr = new XMLHttpRequest();
+    var url = "search/imageSearch/searchByImage";
+    xhr.open("POST", url, true);
+    xhr.setRequestHeader("Content-type", "application/json");
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            var json = JSON.parse(xhr.responseText);
+        	//var json = data;
+            console.log(json.header + ", " + json.result);
+        }
+    };
+    var formData = new FormData($("#file-input")[0]);
+   
+    var data = JSON.stringify({"url": formData});
+    console.log("url:" + data);
+    xhr.send(data);
+    
+    
     visearch.uploadsearch({
     	  image: inputImageFile,
     	  fl: ["im_url"]
