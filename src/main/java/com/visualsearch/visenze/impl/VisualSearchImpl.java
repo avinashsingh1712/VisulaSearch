@@ -12,6 +12,7 @@ import com.visenze.visearch.PagedSearchResult;
 import com.visenze.visearch.SearchParams;
 import com.visenze.visearch.UploadSearchParams;
 import com.visenze.visearch.ViSearch;
+import com.visualsearch.filehandling.impl.Base64DataHandler;
 
 /**
  * 
@@ -34,8 +35,9 @@ public class VisualSearchImpl {
 	 */
 	public String searchByImage (String imageUrl) {
 		
-		File imageFile = new File(imageUrl);
-		UploadSearchParams params = new UploadSearchParams(imageFile);// how its reading the image without sending the file.
+		File outputfile = Base64DataHandler.decodeToImage(imageUrl);
+		
+		UploadSearchParams params = new UploadSearchParams(outputfile);// how its reading the image without sending the file.
 		
 		//  configurable--
 		params.setLimit(30);
@@ -45,7 +47,7 @@ public class VisualSearchImpl {
 		//params.setScoreMax(scoreMax);
 		params.setFacet(true);		
 		List<String> fl = new ArrayList<String>();
-		fl.add(imageFile.getAbsolutePath());
+		fl.add(outputfile.getAbsolutePath());
 		params.setFl(fl);
 		params.setGetAllFl(true); // to get all the image URLS
 		params.setQInfo(true);// To get the main image URL
@@ -200,4 +202,8 @@ public class VisualSearchImpl {
 		return null;
 	}
 
+	
+	
+
+	
 }

@@ -6,6 +6,7 @@ function loadMain() {
 	var name = $("#searchName").val();
 	
 	var filesSelected = document.getElementById("file-input").files;
+	
     if (filesSelected.length > 0) {
       var fileToLoad = filesSelected[0];
       mainDiv.innerHTML = "";
@@ -20,32 +21,33 @@ function loadMain() {
         newImage.src = srcData;
 
         document.getElementById("preview").innerHTML = newImage.outerHTML;
-        //alert("Converted Base64 version is " + document.getElementById("preview").innerHTML);
-        console.log("Converted Base64 version is " + document.getElementById("abc").src);
+        var base64Data =  document.getElementById("abc").src;
+        var block = base64Data.split(";");
+        var base64StringFinal = block[1].split(",")[1];
+                
+        var xhr = new XMLHttpRequest();
+        var url = "search/imageSearch/searchByImage";
+        xhr.open("POST", url, true);
+        xhr.setRequestHeader("Content-type", "application/json");
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                var json = JSON.parse(xhr.responseText);
+            	//var json = data;
+                console.log(json.header + ", " + json.result);
+            }
+        };
+        var formData = new FormData($("#file-input")[0]);
+       
+        var data = JSON.stringify({"url": base64StringFinal});
+       //console.log("url:" + data);
+       xhr.send(data);
+        
       }
       fileReader.readAsDataURL(fileToLoad);
     }
 	
 	
-	
-	
-	
-    var xhr = new XMLHttpRequest();
-    var url = "search/imageSearch/searchByImage";
-    xhr.open("POST", url, true);
-    xhr.setRequestHeader("Content-type", "application/json");
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-            var json = JSON.parse(xhr.responseText);
-        	//var json = data;
-            console.log(json.header + ", " + json.result);
-        }
-    };
-    /*var formData = new FormData($("#file-input")[0]);
    
-    var data = JSON.stringify({"url": formData});
-   console.log("url:" + data);
-   xhr.send(data);*/
     
     
     visearch.uploadsearch({
