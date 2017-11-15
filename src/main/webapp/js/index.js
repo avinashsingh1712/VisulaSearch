@@ -33,29 +33,7 @@ function loadMain() {
             if (xhr.readyState === 4 && xhr.status === 200) {
                 var json = JSON.parse(xhr.responseText);
             	//var json = data;
-                console.log(json.header + ", " + json.result);
-            }
-        };
-        var formData = new FormData($("#file-input")[0]);
-       
-        var data = JSON.stringify({"url": base64StringFinal});
-       //console.log("url:" + data);
-       xhr.send(data);
-        
-      }
-      fileReader.readAsDataURL(fileToLoad);
-    }
-	
-	
-   
-    
-    
-    visearch.uploadsearch({
-    	  image: inputImageFile,
-    	  fl: ["im_url"]
-    	}, function(res) {
-    		console.log(res);
-    		$.each(res, function(key, value) {
+                $.each(json, function(key, value) {
 				if (key == "result") {
 					mainDiv.innerHTML = "";
 					var product_left1 = document.createElement('div');
@@ -99,7 +77,7 @@ function loadMain() {
 								iDiv.addEventListener('mouseover', mouseOver);
 								  iDiv.addEventListener('mouseout', mouseOut);
 								  function mouseOver() {
-									  text2.innerHTML = v;
+									  text2.innerHTML = v.toFixed(3);
 									  iDiv.appendChild(text2);
 								   
 								  }
@@ -149,14 +127,22 @@ function loadMain() {
 						iDiv.appendChild(text1);
 						mainDiv.appendChild(iDiv);
 						
-						
-						
 					});
 
 				}
 			});
-    	
-    	});
+            }
+        };
+        var formData = new FormData($("#file-input")[0]);
+       
+        var data = JSON.stringify({"url": base64StringFinal});
+       //console.log("url:" + data);
+       xhr.send(data);
+        
+      }
+      fileReader.readAsDataURL(fileToLoad);
+    }
+	
+	
 	
 }
-
