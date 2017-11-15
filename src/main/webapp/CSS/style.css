@@ -7,6 +7,11 @@ div.inline {
     border-radius: 2px;
     
     }
+    #abc{
+    
+    height: 300px;
+    width: 300px;
+    } 
     div.inline>p{
     font-size: 18px;
     text-transform: uppercase;
@@ -173,6 +178,14 @@ font-size:20px;
             bottom: 0;
             position: fixed;
         }
+        
+#preview{
+	height:300px;
+	width:300px;
+	float: left;
+	margin-left: 30px;
+}
+
 #preview1{
 	/* height: 300px;
     width: 30%;
@@ -180,4 +193,10 @@ font-size:20px;
     float: left;
     margin-left: 100px;
     margin-top: 100px;
+}
+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+   /* .crop-select-js .crop-wrapper{display:none;} */
+   .image-upload > input{display:inline-block;}
+   .image-upload img{display:none;}
 }
