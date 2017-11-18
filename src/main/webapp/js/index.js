@@ -9,12 +9,13 @@ function loadMain() {
 	
     if (filesSelected.length > 0) {
       var fileToLoad = filesSelected[0];
-      mainDiv.innerHTML = "";
-  	preview.innerHTML = "";
+     // mainDiv.innerHTML = "";
+  	//preview.innerHTML = "";
+  	preview1.innerHTML = "";
      var fileReader = new FileReader();
 
       fileReader.onload = function(fileLoadedEvent) {
-        var srcData = fileLoadedEvent.target.result; // <--- data: base64
+        var srcData = fileLoadedEvent.target.result; 
 
         var newImage = document.createElement('img');
         newImage.id = "abc";
@@ -42,30 +43,77 @@ function loadMain() {
 					product_left1.className = 'mainDiv_left';
 					pTag.className = 'preview_left_cont';
 					product_left1.appendChild(pTag);
+					var pTag1 = document.createElement('p');
+					pTag1.innerHTML = "Score";
+					
+					product_left1.appendChild(pTag1);
+					var x = document.createElement("INPUT");
+					x.setAttribute("type", "text");
+					x.className = "txt_box";
+					x.placeholder = 'From';
+					var connect = document.createElement('div');
+					connect.className = "txt_box_connect";
+					var y = document.createElement("INPUT");
+					y.setAttribute("type", "text");
+					y.className = "txt_box";
+					y.placeholder = 'To';
+					var btn12 = document.createElement("BUTTON");
+					var t = document.createTextNode("View"); 
+					btn12.appendChild(t);
+					var hrTag = document.createElement('hr');
+					hrTag.setAttribute("style", "margin-top:40px;");
+					var prod_cat = document.createElement('p');
+					prod_cat.innerHTML = "Product category";
+					
+				    product_left1.appendChild(x);
+				    product_left1.appendChild(connect);
+				    product_left1.appendChild(y);
+				    product_left1.appendChild(btn12);
+				    product_left1.appendChild(hrTag);
+				    product_left1.appendChild(prod_cat);
 					left2.innerHTML = "";
 					left2.appendChild(product_left1);
 					
 						$.each(value, function(key1, value1) {
 						var iDiv = document.createElement('div');
+						var iDivMou = document.createElement('div');
 						var text1 = document.createElement('p');
-						var text2 = document.createElement('p');
+						var text2 = document.createElement('BUTTON');
 						var oImg = document.createElement("img");
+						/*var btnn = document.createElement("BUTTON");
+						btnn.setAttribute("style","font-size:14px;background-color: #4CAF50");
+						btnn.innerHTML = "Ann";*/
+						var btnn = document.createElement("BUTTON");
+						var brand_title = document.createElement('p');
+						var brand_name = document.createElement('p');
+						var brand_desc = document.createElement('p');
+						 
 						iDiv.className = 'inline1';
 						$.each(value1, function(k, v) {
 							if (k == "im_name") {
 								console.log("name   " + value1.im_name);
+								
+							
 								//text1.innerHTML = v;
 								iDiv.addEventListener('mouseover', mouseOver);
 								  iDiv.addEventListener('mouseout', mouseOut);
 								  function mouseOver() {
-									  text1.innerHTML= v;
-									  iDiv.appendChild(text1);
+									  //iDiv.setAttribute("style","height:250px");
+									 // iDivMou.className = 'mouDiv';
+										btnn.setAttribute("style","font-size:14px;background-color: #09C;color:white;height:35px;width:80%;border-radius:10px");
+										btnn.innerHTML = "Buy Online";
+									  //text1.innerHTML= v;
+										text1.innerHTML= v;
+										  iDiv.appendChild(text1);
+									  iDiv.appendChild(btnn);
 									 
 								   
 								  }
 
 								  function mouseOut() {
+									  //iDiv.setAttribute("style","background-color:white");
 									  text1.innerHTML = ' ';
+									  btnn.setAttribute("style","display:none");
 									
 								  }
 								
@@ -73,9 +121,12 @@ function loadMain() {
 							}
 							if (k == "score") {
 								console.log("score  " + value1.score);
+								text2.setAttribute("style","font-size:14px;background-color: #d8ddec;color:white;height:30px;width:80%;border-radius:10px;");
+								text2.innerHTML = v.toFixed(3);
+								  iDiv.appendChild(text2);
 								//text2.innerHTML = v.toFixed(3);
-								iDiv.addEventListener('mouseover', mouseOver);
-								  iDiv.addEventListener('mouseout', mouseOut);
+								/*iDiv.addEventListener('mouseover', mouseOver);
+								  iDiv.addEventListener('mouseout', mouseOut);*/
 								  function mouseOver() {
 									  text2.innerHTML = v.toFixed(3);
 									  iDiv.appendChild(text2);
@@ -84,6 +135,7 @@ function loadMain() {
 
 								  function mouseOut() {
 									  text2.innerHTML = ' ';
+									  
 									
 								  }
 							}
@@ -100,8 +152,12 @@ function loadMain() {
 										  iDiv.addEventListener('mouseout', mouseOut);
 										  function mouseOver() {
 											  iDiv.appendChild(oImg);
-											  iDiv.appendChild(text2);
+											  iDiv.appendChild(brand_title);
+											  iDiv.appendChild(brand_name);
 												iDiv.appendChild(text1);
+												iDiv.appendChild(text2);
+												iDiv.appendChild(btnn);
+												
 										   
 										  }
 
@@ -110,11 +166,26 @@ function loadMain() {
 												oImg.setAttribute('alt',value1.im_name);
 												oImg.setAttribute("class","resultImageCont");
 												iDiv.appendChild(oImg);
+												iDiv.appendChild(brand_title);
+												iDiv.appendChild(text2);
+												
+												
 											
 										  }
 										
 										  
 
+									}
+									
+									if(k1 == "title"){
+										console.log(v.title);
+										brand_title.innerHTML= v.title;
+										  
+									}
+									if(k1 == "brand"){
+										console.log(v.brand);
+										brand_name.innerHTML= v.brand;
+										  
 									}
 
 								});
@@ -123,6 +194,8 @@ function loadMain() {
 
 						});
 						iDiv.appendChild(oImg);
+						//iDiv.appendChild(btnn);
+						iDiv.appendChild(brand_title);
 						iDiv.appendChild(text2);
 						iDiv.appendChild(text1);
 						mainDiv.appendChild(iDiv);
@@ -133,7 +206,7 @@ function loadMain() {
 			});
             }
         };
-        var formData = new FormData($("#file-input")[0]);
+        //var formData = new FormData($("#file-input")[0]);
        
         var data = JSON.stringify({"url": base64StringFinal});
        //console.log("url:" + data);
@@ -146,3 +219,4 @@ function loadMain() {
 	
 	
 }
+
