@@ -6,6 +6,7 @@
 package com.visualsearch.visenze.impl;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -17,8 +18,6 @@ import com.visenze.visearch.PagedSearchResult;
 import com.visenze.visearch.SearchParams;
 import com.visenze.visearch.UploadSearchParams;
 import com.visenze.visearch.ViSearch;
-import com.visualsearch.beans.PropertiesBean;
-import com.visualsearch.config.impl.PropertyValueHandler;
 import com.visualsearch.filehandling.impl.Base64DataHandler;
 
 /**
@@ -41,8 +40,9 @@ public class VisualSearchImpl {
 	/**
 	 * This will search the similar images for given image.
 	 * @return String
+	 * @throws IOException 
 	 */
-	public String searchByImage (String imageUrl) {
+	public String searchByImage (String imageUrl) throws IOException {
 		
 		File outputfile = Base64DataHandler.decodeToImage(imageUrl);
 		
@@ -179,13 +179,13 @@ public class VisualSearchImpl {
 		return params;
 	}
 
-	public static void main(String args[]) {
+	/*public static void main(String args[]) {
 		VisualSearchImpl impl = new VisualSearchImpl();
 		//impl.searchForSimilarRecommendations("malm100");
 		//String url = "http://www.ikea.com/us/en/images/products/billy-bookcase-white__0252367_PE391149_S4.JPG";
 		//impl.searchByUploadedImageAndURL(url);
 		impl.searchByImage("C:/Users/Public/Pictures/Sample Pictures/Penguins.jpg");
-	}
+	}*/
 
 	/**
 	 * 

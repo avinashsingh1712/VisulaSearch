@@ -24,6 +24,10 @@ public class VisualSearchConstants {
 	
 	public static final String SEARCH_LIMIT="searchlimit";
 	
+	public static final String TEMP_PNG = "/temp.png";
+	
+	public static final String JAVA_IO_TMPDIR = "java.io.tmpdir";
+	
 	
 
 }
