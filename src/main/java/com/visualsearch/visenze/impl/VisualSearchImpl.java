@@ -1,3 +1,8 @@
+/*
+ * Created on 2017-nov-15
+ *
+ * (c) 2017, Visual Search
+ */
 package com.visualsearch.visenze.impl;
 
 import java.io.File;
@@ -12,6 +17,8 @@ import com.visenze.visearch.PagedSearchResult;
 import com.visenze.visearch.SearchParams;
 import com.visenze.visearch.UploadSearchParams;
 import com.visenze.visearch.ViSearch;
+import com.visualsearch.beans.PropertiesBean;
+import com.visualsearch.config.impl.PropertyValueHandler;
 import com.visualsearch.filehandling.impl.Base64DataHandler;
 
 /**
@@ -20,15 +27,17 @@ import com.visualsearch.filehandling.impl.Base64DataHandler;
  *
  */
 public class VisualSearchImpl {
-
-	private static String ACCESS_KEY = "2922ca9709bb6f648b3cc0c95dd25453";
-	private static String SECRET_KEY = "5ff65d3b5b8f5262c82e5fb4b6c1cc79";
-	private static ViSearch client = new ViSearch(ACCESS_KEY, SECRET_KEY);
-	private float scoreMin = 0.90F;
-	private float scoreMax = 1.0F;
-
-		
 	
+	
+	/*private static PropertiesBean bean;
+		static {
+			bean = PropertyValueHandler.valueHandler();
+		}*/
+	
+		//private static ViSearch client = new ViSearch(bean.getAccessKey(), bean.getSecretKey());
+		private static ViSearch client = new ViSearch("2922ca9709bb6f648b3cc0c95dd25453", "5ff65d3b5b8f5262c82e5fb4b6c1cc79");
+		
+		
 	/**
 	 * This will search the similar images for given image.
 	 * @return String
@@ -40,7 +49,7 @@ public class VisualSearchImpl {
 		UploadSearchParams params = new UploadSearchParams(outputfile);// how its reading the image without sending the file.
 		
 		//  configurable--
-		params.setLimit(30);
+		params.setLimit(10);
 		params.setPage(1);
 		params.setScore(true);
 		//params.setScoreMin(scoreMin);
@@ -53,6 +62,7 @@ public class VisualSearchImpl {
 		params.setQInfo(true);// To get the main image URL
 		
 		PagedSearchResult searchResult = client.uploadSearch(params);
+		//System.out.println(bean.getAccessKey() +"  "+ bean.getSecretKey());
 		
 
 		String errorMessage = searchResult.getErrorMessage();
@@ -160,8 +170,8 @@ public class VisualSearchImpl {
 		params.setLimit(30);
 		params.setPage(1);
 		params.setScore(true);
-		params.setScoreMin(scoreMin);
-		params.setScoreMax(scoreMax);
+		//params.setScoreMin(bean.getScoreMin());
+		//params.setScoreMax(bean.getScoreMax());
 		params.setFacet(true);
 		params.setFl(fl);
 		params.setGetAllFl(true); // to get all the image URLS
@@ -184,7 +194,6 @@ public class VisualSearchImpl {
 	 */
 	private PagedSearchResult uploadSearchImages(UploadSearchParams uploadSearchParams) {
 
-		ViSearch client = new ViSearch(ACCESS_KEY, SECRET_KEY);
 
 		List<Image> images = new ArrayList<Image>();
 		String imName = "new_upload_IKEA2";
