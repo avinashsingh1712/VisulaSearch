@@ -9,7 +9,7 @@
   
 <link rel="stylesheet" type="text/css" href="CSS/style.css">
  <script src="js/crop.js"></script>
-<script type="text/javascript" src="js/index.js"></script>
+<script type="text/javascript" src="js/visualSearch_main.js"></script>
 <script type="text/javascript" src="js/preview.js"></script>
 
 
@@ -70,7 +70,9 @@
 <div id="preview1">
 
 </div>
+<div id="preview2" style="display: none;"> 
 
+</div>
 <br />
 <hr style="margin-top:0px;margin-bottom: 0px;width: 95%;float: left;">
 <div id="left2"></div>
@@ -85,7 +87,7 @@
 
 <footer>
  <div class="footer-column">
- <h4>Catalog & Brochures</h4>
+ <h4>Catalog &amp; Brochures</h4>
  <a class="link" href="http://info.ikea-usa.com/Signup/">Request</a>
  <a class="link" href="http://info.ikea-usa.com/Signup/">View Online</a>
  <a class="link" href="http://info.ikea-usa.com/Signup/">Buying Guides</a>
@@ -103,14 +105,14 @@
  <a class="link" href="http://info.ikea-usa.com/Signup/">Store Delivery</a>
  <a class="link" href="http://info.ikea-usa.com/Signup/">Online Delivery</a>
  <a class="link" href="http://info.ikea-usa.com/Signup/">Picking with Delivery</a>
- <a class="link" href="http://info.ikea-usa.com/Signup/">Delivery Terms & Conditions</a>
+ <a class="link" href="http://info.ikea-usa.com/Signup/">Delivery Terms &amp; Conditions</a>
  </div>
  <div class="footer-column">
  <h4>Helpful Links</h4>
  <a class="link" href="http://info.ikea-usa.com/Signup/">Find an IKEA Store</a>
  <a class="link" href="http://info.ikea-usa.com/Signup/">All Products</a>
  <a class="link" href="http://info.ikea-usa.com/Signup/">Planning Tools</a>
- <a class="link" href="http://info.ikea-usa.com/Signup/">IKEA Food & Restaurant</a>
+ <a class="link" href="http://info.ikea-usa.com/Signup/">IKEA Food &amp; Restaurant</a>
  <a class="link" href="http://info.ikea-usa.com/Signup/">Warranties</a>
  <a class="link" href="http://info.ikea-usa.com/Signup/">IKEA Services</a>
  <a class="link" href="http://info.ikea-usa.com/Signup/">IKEA Gift Card</a>
@@ -121,7 +123,7 @@
  <a class="link" href="http://info.ikea-usa.com/Signup/">The IKEA Concept</a>
  <a class="link" href="http://info.ikea-usa.com/Signup/">Democratic Design</a>
  <a class="link" href="http://info.ikea-usa.com/Signup/">About the IKEA Group</a>
- <a class="link" href="http://info.ikea-usa.com/Signup/">People & Planet</a>
+ <a class="link" href="http://info.ikea-usa.com/Signup/">People &amp; Planet</a>
  <a class="link" href="http://info.ikea-usa.com/Signup/">Press Room</a>
  <a class="link" href="http://info.ikea-usa.com/Signup/">Read our Materials</a>
  <a class="link" href="http://info.ikea-usa.com/Signup/">IKEA Foundation</a>
