@@ -24,7 +24,7 @@ div.inline {
         margin-top: 7px;
     	margin-right: 4px;
     	}
-    #abc{
+    #base_id{
     
     height: 300px;
     width: 300px;
@@ -34,29 +34,30 @@ div.inline {
     text-transform: uppercase;
     text-align: center;
     }
-/* div.inline1 { 
-	float: left;
-    margin-right: 20px;
-    border: 1px solid #9fd4ca;
-    margin-top: 10px;
-    height: 220px;
-    width: 160px;
-    text-align: center;
-    background-color: #bbbaba;
-    border-radius: 10px;
-    } */
-    div.inline1 {
+
+    .inline1 {
     float: left;
     border-left: 1px solid darkgrey;
     border-bottom: 1px solid darkgrey;
-    height: 220px;
+    height: 270px;
     width: 160px;
     text-align: center;
     margin-left: -1px;
-    
+    display: inline-block;
+    }
+    .inline1>p {
+    text-align: left;
+    margin: 0px;
 }
-
-    div.inline1:hover {
+.inline1>h5 {
+    text-align: left;
+    margin: 0px;
+}
+.show_btn{
+	font-size:14px;background-color: #09C;color:white;height:35px;width:80%;border-radius:10px;
+}
+.hide_btn{display: none;}
+    .inline2 {
     float: left;
     border: 1px solid darkgrey;
     
@@ -65,12 +66,11 @@ div.inline {
     text-align: center;
    	box-shadow: 3px 2px 2px #888888;
    	border-radius:5px;
-   	z-index: -1;
+   	z-index: 1;
     
 }  
 
-/*div.internal{height:100px;width:100px;border:1px solid red;}
- .result{height:50px;width:20px;border:1px solid green;} */
+
  .image-upload > input
 {
     display: none;
@@ -164,7 +164,7 @@ li a:hover:not(.active) {
     float: left; 
     margin-top:-22px; 
 }
-.mainDiv_left > p:nth-child(2){
+.mainDiv_left > p:nth-child(3){
 	font-weight: bold;
 	color:red;
 	margin-left: 5px;
@@ -197,15 +197,7 @@ li a:hover:not(.active) {
     border-left: 1px solid;
     border-bottom: 1px solid;
 }
-/*Image Upload preview  */
-/* .product_holder1 {
-    height: 265px;
-    border: 1px solid white;
-    background: #f6f4ee;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 25px;
-} */
+
 #pr1{
 	float: left;
     width: 60%;
@@ -235,9 +227,7 @@ font-size:20px;
 }
 
 #preview1{
-	/* height: 300px;
-    width: 30%;
-    float: right; */
+	
     float: left;
     margin-left: 100px;
     margin-top: 100px;
@@ -278,5 +268,13 @@ a {
 @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
    /* .crop-select-js .crop-wrapper{display:none;} */
    .image-upload > input{display:inline-block;}
-   .image-upload img{display:none;}
+   .image-upload img{display:none;} 
+   /* .image-upload > input {
+    display: none;
+}
+.image-upload img {
+    width: 30px;
+    cursor: pointer;
+    margin-bottom: -10px;
+} */
 }
