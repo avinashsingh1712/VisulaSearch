@@ -32,6 +32,7 @@ function loadMain() {
         
                 
         var xhr = new XMLHttpRequest();
+        //var url = "http://itinbac-dw0760:8080/VisualSearch/search/imageSearch/searchByImage";
         var url = "search/imageSearch/searchByImage";
         xhr.open("POST", url, true);
         xhr.setRequestHeader("Content-type", "application/json");
