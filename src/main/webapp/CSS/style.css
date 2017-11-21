@@ -48,10 +48,12 @@ div.inline {
     .inline1>p {
     text-align: left;
     margin: 0px;
+    padding-left:10px;
 }
 .inline1>h5 {
     text-align: left;
     margin: 0px;
+    padding-left: 6px;
 }
 .show_btn{
 	font-size:14px;background-color: #09C;color:white;height:35px;width:80%;border-radius:10px;
@@ -220,7 +222,7 @@ font-size:20px;
    
         
 #preview{
-	height:300px;
+	height:auto;
 	width:300px;
 	float: left;
 	margin-left: 30px;
