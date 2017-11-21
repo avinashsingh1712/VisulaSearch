@@ -35,8 +35,8 @@
     <input id="file-input" type="file"/>
     
 </div> 
-<img src="images/shopping-list.svg" style="height:30px;margin-bottom:-10px;margin-left:120px;"/>
-<img src="images/shopping-bag.svg" style="height:30px;margin-bottom:-10px;"/>
+<img src="images/shopping-list.png" style="height:30px;margin-bottom:-10px;margin-left:120px;"/>
+<img src="images/shopping-bag.png" style="height:30px;margin-bottom:-10px;"/>
 </div> 
 
 
