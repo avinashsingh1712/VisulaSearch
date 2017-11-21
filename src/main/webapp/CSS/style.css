@@ -265,16 +265,12 @@ a {
     margin-left: -1px;
 }
 
-@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-   /* .crop-select-js .crop-wrapper{display:none;} */
-   .image-upload > input{display:inline-block;}
-   .image-upload img{display:none;} 
-   /* .image-upload > input {
-    display: none;
+ @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+ 
+label{
+    display: inline-block;
 }
-.image-upload img {
-    width: 30px;
-    cursor: pointer;
-    margin-bottom: -10px;
-} */
+label img{
+    pointer-events: none;
 }
+} 
