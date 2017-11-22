@@ -76,6 +76,7 @@
 <br />
 <hr style="margin-top:0px;margin-bottom: 0px;width: 95%;float: left;">
 <div id="left2"></div>
+<div id="mainDiv1"> </div>
 <div id="mainDiv"> </div>
 
 </form>
