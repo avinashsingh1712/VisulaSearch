@@ -225,9 +225,10 @@ li a:hover:not(.active) {
     text-align: center;
     font-size: 20px;
     padding: 8px;
-    border-top: 1px solid;
+border:1px solid;
+    /*border-top: 1px solid;
     border-left: 1px solid;
-    border-bottom: 1px solid;
+    border-bottom: 1px solid;*/
 }
 
 #pr1{
