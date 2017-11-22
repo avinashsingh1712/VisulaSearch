@@ -38,17 +38,27 @@ div.inline {
     .inline1 {
     float: left;
     border-left: 1px solid darkgrey;
-    border-bottom: 1px solid darkgrey;
-    height: 270px;
+    border-top: 1px solid darkgrey;
+    height: 260px;
     width: 160px;
     text-align: center;
     margin-left: -1px;
     display: inline-block;
     }
+    .inline1:nth-last-child(-n+5){border-bottom: 1px solid darkgrey;}
     .inline1>p {
     text-align: left;
     margin: 0px;
     padding-left:10px;
+}
+#mainDiv1{height:38px;width: 79%;float:left}
+#mainDiv1>button{
+	    padding: 5px;
+    margin-top: 5px;
+    border-radius: 15px;
+    margin-left: 15px;
+        pointer-events: none;
+        border: none;
 }
 .inline1>h5 {
     text-align: left;
@@ -120,6 +130,25 @@ div.inline {
 	height:130px;
 	width:130px;
 	padding-top:10px;
+	-webkit-transition: all 1s ease;
+     -moz-transition: all 1s ease;
+      -ms-transition: all 1s ease;
+          transition: all 1s ease;
+}
+.resultImageCont:hover{
+	height:150px;
+	width:150px;
+	padding-top:0px;
+}
+.buy_btnn{
+	font-size:14px;
+	background-color: #09C;
+	color:white;
+	height:30px;
+	width:70%;
+	border-radius:15px;
+	margin-top:5px;
+	pointer-events: none;
 }
 ul {
     list-style-type: none;
@@ -266,6 +295,7 @@ a {
     text-align: center;
     margin-left: -1px;
 }
+
 
  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
  
