@@ -1,6 +1,12 @@
 function loadMain() {
 	
 	var inputImageFile = document.getElementById("file-input");
+	var maindiv1 = document.getElementById("mainDiv1");
+	var pagi = document.createElement('button');
+	pagi.innerHTML = "Show comparison";
+	var pagi1 = document.createElement('button');
+	pagi1.innerHTML = "Slideshow";
+	
 	var maindiv = document.getElementById("mainDiv");
 	var preview = document.getElementById("preview");
 	var name = $("#searchName").val();
@@ -116,10 +122,13 @@ function loadMain() {
 						iDiv.appendChild(text2);
 						iDiv.appendChild(text1);
 						btnn.setAttribute("id", "btnnid"+i);
-						btnn.setAttribute("style","font-size:14px;background-color: #09C;color:white;height:35px;width:80%;border-radius:10px;margin-top:10px");
+						/*btnn.setAttribute("style","font-size:14px;background-color: #09C;color:white;height:35px;width:80%;border-radius:10px;margin-top:10px");*/
+						btnn.setAttribute("class","buy_btnn");
 						btnn.innerHTML = "Buy Online";
 						iDiv.appendChild(btnn);
 						iDiv.setAttribute("id", i);
+						maindiv1.appendChild(pagi);
+						maindiv1.appendChild(pagi1);
 						mainDiv.appendChild(iDiv);		
 					});
 
