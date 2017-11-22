@@ -38,14 +38,14 @@ div.inline {
     .inline1 {
     float: left;
     border-left: 1px solid darkgrey;
-    border-top: 1px solid darkgrey;
-    height: 260px;
+    border-bottom: 1px solid darkgrey;
+    height: 245px;
     width: 160px;
     text-align: center;
     margin-left: -1px;
     display: inline-block;
     }
-    .inline1:nth-last-child(-n+5){border-bottom: 1px solid darkgrey;}
+/* .inline1:nth-last-child(-n+5){border-bottom: 1px solid darkgrey;} */
     .inline1>p {
     text-align: left;
     margin: 0px;
@@ -195,13 +195,14 @@ li a:hover:not(.active) {
     float: left; 
     margin-top:-22px; 
 }
-.mainDiv_left > p:nth-child(3){
+.mainDiv_left > p:not(:first-child){
 	font-weight: bold;
-	color:red;
-	margin-left: 5px;
-	margin-bottom: 5px;
+	margin-left: 65px;
+	
 }
-
+.mainDiv_left > p:nth-child(3){
+	color:red;
+}
 .txt_box{
 	width:80px;
 	display:inline-block;
