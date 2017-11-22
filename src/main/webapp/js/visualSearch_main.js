@@ -73,7 +73,7 @@ function loadMain() {
 						var iDiv = document.createElement('div');
 						var iDivMou = document.createElement('div');
 						var text1 = document.createElement('p');
-						/*var text2 = document.createElement('p');*/
+						var text2 = document.createElement('p');
 						var oImg = document.createElement("img");
 						
 						var btnn = document.createElement("BUTTON");
@@ -86,10 +86,10 @@ function loadMain() {
 						$.each(value1, function(k, v) {
 							if (k == "im_name") {
 								i = i + 1;}
-							/*if (k == "score") {
+							if (k == "score") {
 								text2.innerHTML = "Score : " + v.toFixed(3);
 								  iDiv.appendChild(text2);	
-							}*/
+							}
 
 							if (k == "value_map") {
 								$.each(v, function(k1, v1) {
@@ -119,7 +119,7 @@ function loadMain() {
 						iDiv.appendChild(brand_name);
 						iDiv.appendChild(brand_title);
 						iDiv.appendChild(brand_desc);
-						/*iDiv.appendChild(text2);*/
+						iDiv.appendChild(text2);
 						iDiv.appendChild(text1);
 						btnn.setAttribute("id", "btnnid"+i);
 						/*btnn.setAttribute("style","font-size:14px;background-color: #09C;color:white;height:35px;width:80%;border-radius:10px;margin-top:10px");*/
