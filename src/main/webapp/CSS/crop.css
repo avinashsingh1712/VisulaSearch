@@ -87,7 +87,7 @@
     display: block;
     width: 7px;
     height: 7px;
-    background-color: rgba(232, 229, 229, .8);
+    background-color: rgba(156, 146, 146, 0.8);
     /* border: 1px solid #000; */
     z-index: 20
 }
