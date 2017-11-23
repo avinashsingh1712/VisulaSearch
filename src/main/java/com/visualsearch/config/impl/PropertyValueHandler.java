@@ -26,9 +26,20 @@ public class PropertyValueHandler {
 		PropertiesBean bean = new PropertiesBean();
 
 		try {
-			input = new FileInputStream("config.properties");
+			//input = new FileInputStream("config.properties");
 
+			//InputStream inputStream = PropertyValueHandler.class.getClassLoader().getResourceAsStream("../main/config.properties");
+			//prop.load(inputStream);
+			
+			ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+			//InputStream in = classLoader.getResourceAsStream("config.properties");
+			//input = PropertyValueHandler.class.getClassLoader().getResourceAsStream("config.properties");
+			// ...
+			//ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+			//prop.load(input);
+			input = PropertyValueHandler.class.getClassLoader().getResourceAsStream("config.properties");
 			prop.load(input);
+			System.out.println(input);
 
 			bean.setAccessKey(prop.getProperty(VisualSearchConstants.ACCESS_KEY));
 			bean.setSecretKey(prop.getProperty(VisualSearchConstants.SECRET_KEY));
