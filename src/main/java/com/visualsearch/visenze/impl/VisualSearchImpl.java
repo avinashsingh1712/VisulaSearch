@@ -18,6 +18,8 @@ import com.visenze.visearch.PagedSearchResult;
 import com.visenze.visearch.SearchParams;
 import com.visenze.visearch.UploadSearchParams;
 import com.visenze.visearch.ViSearch;
+import com.visualsearch.beans.PropertiesBean;
+import com.visualsearch.config.impl.PropertyValueHandler;
 import com.visualsearch.filehandling.impl.Base64DataHandler;
 
 /**
@@ -28,13 +30,15 @@ import com.visualsearch.filehandling.impl.Base64DataHandler;
 public class VisualSearchImpl {
 	
 	
-	/*private static PropertiesBean bean;
-		static {
+	private static PropertiesBean bean;
+		/*static {
 			bean = PropertyValueHandler.valueHandler();
 		}*/
+		
 	
 		//private static ViSearch client = new ViSearch(bean.getAccessKey(), bean.getSecretKey());
-		private static ViSearch client = new ViSearch("2922ca9709bb6f648b3cc0c95dd25453", "5ff65d3b5b8f5262c82e5fb4b6c1cc79");
+		//private static ViSearch client_POCApplication = new ViSearch("2922ca9709bb6f648b3cc0c95dd25453", "5ff65d3b5b8f5262c82e5fb4b6c1cc79");
+	private static ViSearch client_VisualSearchPOC = new ViSearch("dbe8fb3ae0544874d140b6e440c4db32", "b78053339f0f4d2aad44b5b201b643be");
 		
 		
 	/**
@@ -49,28 +53,34 @@ public class VisualSearchImpl {
 		UploadSearchParams params = new UploadSearchParams(outputfile);// how its reading the image without sending the file.
 		
 		//  configurable--
-		params.setLimit(10);
+		params.setLimit(30);
 		params.setPage(1);
 		params.setScore(true);
-		//params.setScoreMin(scoreMin);
-		//params.setScoreMax(scoreMax);
+		params.setScoreMin(0.50F);
+		params.setScoreMax(1.0F);
 		params.setFacet(true);		
-		List<String> fl = new ArrayList<String>();
-		fl.add(outputfile.getAbsolutePath());
-		params.setFl(fl);
+		
 		params.setGetAllFl(true); // to get all the image URLS
 		params.setQInfo(true);// To get the main image URL
 		
-		PagedSearchResult searchResult = client.uploadSearch(params);
-		//System.out.println(bean.getAccessKey() +"  "+ bean.getSecretKey());
 		
-
+		PagedSearchResult searchResult = client_VisualSearchPOC.uploadSearch(params);
+		//System.out.println(bean.getAccessKey() +"  "+ bean.getSecretKey());
+		System.out.println("Search data list 1 - " + searchResult.getRawJson());
 		String errorMessage = searchResult.getErrorMessage();
 		if (errorMessage != null) {
 			return errorMessage;
 		}
+				
 		
-		System.out.println("Search data list - " + searchResult.getRawJson());
+		//get imid from previous request
+		//String imId = searchResult.getImId();
+
+		//UploadSearchParams param = new UploadSearchParams(imId);
+		//PagedSearchResult result = client_VisualSearchPOC.uploadSearch(param);
+		
+		
+		//System.out.println("Search data list - " + result.getRawJson());
 		
 		return searchResult.getRawJson();
 	}
@@ -86,7 +96,7 @@ public class VisualSearchImpl {
 		// Set the required filters.
 		SearchParams params = setFiltersForSimilarRecommendations(im_name);
 
-		PagedSearchResult searchResult = client.search(params);
+		PagedSearchResult searchResult = client_VisualSearchPOC.search(params);
 
 		String errorMessage = searchResult.getErrorMessage();
 		if (errorMessage != null) {
@@ -129,7 +139,7 @@ public class VisualSearchImpl {
 
 		// Searching a publicly accessible image URL
 
-		PagedSearchResult searchResult2 = client.uploadSearch(params);
+		PagedSearchResult searchResult2 = client_VisualSearchPOC.uploadSearch(params);
 		System.out.println(searchResult2.getRawJson());
 		System.out.println(searchResult2.getErrorMessage());
 
@@ -206,7 +216,7 @@ public class VisualSearchImpl {
 		// wingtips");
 		// metadata.put("price", "100.0");
 		images.add(new Image(imName, imUrl, metadata));
-		client.insert(images);
+		client_VisualSearchPOC.insert(images);
 
 		return null;
 	}
