@@ -10,7 +10,7 @@ package com.visualsearch.beans;
  * @author avsin3
  *
  */
-public class PropertiesBean {
+public class ConfigBean {
 
 	private String secretKey;
 
@@ -21,6 +21,59 @@ public class PropertiesBean {
 	private int searchlimit;
 
 	private String accessKey;
+
+	private boolean isScore;
+
+	private boolean isFacet;
+
+	private boolean isAllFl;
+
+	private boolean isQInfo;
+
+	/**
+	 * @return the isScore
+	 */
+	public boolean isScore() {
+		return isScore;
+	}
+
+	/**
+	 * @param isScore
+	 *            the isScore to set
+	 */
+	public void setScore(boolean isScore) {
+		this.isScore = isScore;
+	}
+
+	/**
+	 * @return the isFacet
+	 */
+	public boolean isFacet() {
+		return isFacet;
+	}
+
+	/**
+	 * @param isFacet
+	 *            the isFacet to set
+	 */
+	public void setFacet(boolean isFacet) {
+		this.isFacet = isFacet;
+	}
+
+	/**
+	 * @return the isAllFl
+	 */
+	public boolean isAllFl() {
+		return isAllFl;
+	}
+
+	/**
+	 * @param isAllFl
+	 *            the isAllFl to set
+	 */
+	public void setAllFl(boolean isAllFl) {
+		this.isAllFl = isAllFl;
+	}
 
 	/**
 	 * @return the secretKey
@@ -67,8 +120,6 @@ public class PropertiesBean {
 		this.scoreMax = scoreMax;
 	}
 
-
-
 	/**
 	 * @return the searchlimit
 	 */
@@ -77,7 +128,8 @@ public class PropertiesBean {
 	}
 
 	/**
-	 * @param searchlimit the searchlimit to set
+	 * @param searchlimit
+	 *            the searchlimit to set
 	 */
 	public void setSearchlimit(int searchlimit) {
 		this.searchlimit = searchlimit;
@@ -96,6 +148,21 @@ public class PropertiesBean {
 	 */
 	public void setAccessKey(String accessKey) {
 		this.accessKey = accessKey;
+	}
+
+	/**
+	 * @return the isQInfo
+	 */
+	public boolean isQInfo() {
+		return isQInfo;
+	}
+
+	/**
+	 * @param isQInfo
+	 *            the isQInfo to set
+	 */
+	public void setQInfo(boolean isQInfo) {
+		this.isQInfo = isQInfo;
 	}
 
 }

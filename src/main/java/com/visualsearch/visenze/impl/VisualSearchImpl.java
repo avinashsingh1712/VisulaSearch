@@ -18,8 +18,8 @@ import com.visenze.visearch.PagedSearchResult;
 import com.visenze.visearch.SearchParams;
 import com.visenze.visearch.UploadSearchParams;
 import com.visenze.visearch.ViSearch;
-import com.visualsearch.beans.PropertiesBean;
-import com.visualsearch.config.impl.PropertyValueHandler;
+import com.visualsearch.beans.ConfigBean;
+import com.visualsearch.config.impl.PropValueHandler;
 import com.visualsearch.filehandling.impl.Base64DataHandler;
 
 /**
@@ -30,15 +30,17 @@ import com.visualsearch.filehandling.impl.Base64DataHandler;
 public class VisualSearchImpl {
 	
 	
-	private static PropertiesBean bean;
-		/*static {
-			bean = PropertyValueHandler.valueHandler();
-		}*/
+	private static ConfigBean bean;
+	private static ViSearch client;
+	
+	public VisualSearchImpl() {
+		bean = new PropValueHandler().valueHandler();
+		client = new ViSearch(bean.getAccessKey(), bean.getSecretKey());
+	}
 		
 	
-		//private static ViSearch client = new ViSearch(bean.getAccessKey(), bean.getSecretKey());
+		
 		//private static ViSearch client_POCApplication = new ViSearch("2922ca9709bb6f648b3cc0c95dd25453", "5ff65d3b5b8f5262c82e5fb4b6c1cc79");
-	private static ViSearch client_VisualSearchPOC = new ViSearch("dbe8fb3ae0544874d140b6e440c4db32", "b78053339f0f4d2aad44b5b201b643be");
 		
 		
 	/**
@@ -46,27 +48,25 @@ public class VisualSearchImpl {
 	 * @return String
 	 * @throws IOException 
 	 */
-	public String searchByImage (String imageUrl) throws IOException {
+	public String searchByImage (final String imageUrl) throws IOException {
 		
 		File outputfile = Base64DataHandler.decodeToImage(imageUrl);
 		
-		UploadSearchParams params = new UploadSearchParams(outputfile);// how its reading the image without sending the file.
+		UploadSearchParams searchParamas = new UploadSearchParams(outputfile);
 		
-		//  configurable--
-		params.setLimit(30);
-		params.setPage(1);
-		params.setScore(true);
-		params.setScoreMin(0.50F);
-		params.setScoreMax(1.0F);
-		params.setFacet(true);		
+		searchParamas.setLimit(bean.getSearchlimit());
+		searchParamas.setPage(1);
+		searchParamas.setScore(bean.isScore());
+		searchParamas.setScoreMin(bean.getScoreMin());
+		searchParamas.setScoreMax(bean.getScoreMax());
+		searchParamas.setFacet(bean.isFacet());		
 		
-		params.setGetAllFl(true); // to get all the image URLS
-		params.setQInfo(true);// To get the main image URL
+		searchParamas.setGetAllFl(bean.isAllFl()); // to get all the image URLS
+		searchParamas.setQInfo(bean.isQInfo());// To get the main image URL
 		
 		
-		PagedSearchResult searchResult = client_VisualSearchPOC.uploadSearch(params);
-		//System.out.println(bean.getAccessKey() +"  "+ bean.getSecretKey());
-		System.out.println("Search data list 1 - " + searchResult.getRawJson());
+		PagedSearchResult searchResult = client.uploadSearch(searchParamas);
+		System.out.println("Search data list  - " + searchResult.getRawJson());
 		String errorMessage = searchResult.getErrorMessage();
 		if (errorMessage != null) {
 			return errorMessage;
@@ -96,7 +96,7 @@ public class VisualSearchImpl {
 		// Set the required filters.
 		SearchParams params = setFiltersForSimilarRecommendations(im_name);
 
-		PagedSearchResult searchResult = client_VisualSearchPOC.search(params);
+		PagedSearchResult searchResult = client.search(params);
 
 		String errorMessage = searchResult.getErrorMessage();
 		if (errorMessage != null) {
@@ -139,7 +139,7 @@ public class VisualSearchImpl {
 
 		// Searching a publicly accessible image URL
 
-		PagedSearchResult searchResult2 = client_VisualSearchPOC.uploadSearch(params);
+		PagedSearchResult searchResult2 = client.uploadSearch(params);
 		System.out.println(searchResult2.getRawJson());
 		System.out.println(searchResult2.getErrorMessage());
 
@@ -216,7 +216,7 @@ public class VisualSearchImpl {
 		// wingtips");
 		// metadata.put("price", "100.0");
 		images.add(new Image(imName, imUrl, metadata));
-		client_VisualSearchPOC.insert(images);
+		client.insert(images);
 
 		return null;
 	}

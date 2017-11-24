@@ -28,6 +28,8 @@ public class VisualSearchConstants {
 	
 	public static final String JAVA_IO_TMPDIR = "java.io.tmpdir";
 	
+	public static final String CONFIG_PROPERTY_FILE = "config.properties";
+	
 	
 
 }
