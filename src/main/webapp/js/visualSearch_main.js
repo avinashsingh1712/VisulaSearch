@@ -43,7 +43,11 @@ function loadMain() {
                 $.each(json, function(key, value) {
 				if (key == "result") {
 					
+				if(value == '' || null){
+					console.log("error");
+				}
 					
+				else{
 					mainDiv.innerHTML = "";
 					var product_left1 = document.createElement('div');
 					var pTag = document.createElement('p');
@@ -79,6 +83,8 @@ function loadMain() {
 						
 						var btnn = document.createElement("BUTTON");
 						var brand_title = document.createElement('p');
+						brand_title.setAttribute("style","font-weight: bold");
+						var cate = document.createElement('p');
 						var brand_name = document.createElement('h5');
 						var brand_desc = document.createElement('p');
 						var hrTag = document.createElement('hr');
@@ -88,15 +94,16 @@ function loadMain() {
 							if (k == "im_name") {
 								text1.innerHTML = value1.im_name.charAt(0).toUpperCase()+ this.slice(1);
 								console.log("name   " + value1.im_name);
-								iDiv.appendChild(text1);
+								//iDiv.appendChild(text1);
 								
-								i = i + 1;}
+								}
 							if (k == "score") {
+								
 								text2.innerHTML = "Score : " + v.toFixed(3);
-								//text2.innerHTML = "Score : " + v *100;
+								//text2.innerHTML = "Score : " + value1.score;
 								  iDiv.appendChild(text2);	
 							}
-
+							
 							if (k == "value_map") {
 								$.each(v, function(k1, v1) {
 									if (k1 == "im_url") {
@@ -114,6 +121,9 @@ function loadMain() {
 									if(k1 == "description"){
 										brand_desc.innerHTML= v.description;	  
 									}
+									if(k1 == "category"){
+										cate.innerHTML = v.category;
+									}
 
 								});
 
@@ -122,8 +132,11 @@ function loadMain() {
 						});
 						
 						iDiv.appendChild(oImg);
-						iDiv.appendChild(text1);
-						iDiv.appendChild(brand_name);
+						
+						//iDiv.appendChild(brand_name);
+						
+						/*iDiv.appendChild(text1);
+						iDiv.appendChild(cate);*/
 						iDiv.appendChild(brand_title);
 						iDiv.appendChild(brand_desc);
 						iDiv.appendChild(text2);
@@ -140,6 +153,7 @@ function loadMain() {
 						mainDiv.appendChild(iDiv);		
 					});
 
+				}
 				}
 				
 			});
