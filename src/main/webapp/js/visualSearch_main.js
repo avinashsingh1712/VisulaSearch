@@ -71,6 +71,7 @@ function loadMain() {
 					
 						$.each(value, function(key1, value1) {
 						var iDiv = document.createElement('div');
+						
 						var iDivMou = document.createElement('div');
 						var text1 = document.createElement('p');
 						var text2 = document.createElement('p');
@@ -85,6 +86,10 @@ function loadMain() {
 						iDiv.className = 'inline1';
 						$.each(value1, function(k, v) {
 							if (k == "im_name") {
+								text1.innerHTML = value1.im_name.charAt(0).toUpperCase()+ this.slice(1);
+								console.log("name   " + value1.im_name);
+								iDiv.appendChild(text1);
+								
 								i = i + 1;}
 							if (k == "score") {
 								text2.innerHTML = "Score : " + v.toFixed(3);
@@ -117,13 +122,13 @@ function loadMain() {
 						});
 						
 						iDiv.appendChild(oImg);
+						iDiv.appendChild(text1);
 						iDiv.appendChild(brand_name);
 						iDiv.appendChild(brand_title);
 						iDiv.appendChild(brand_desc);
 						iDiv.appendChild(text2);
-						iDiv.appendChild(text1);
+						
 						btnn.setAttribute("id", "btnnid"+i);
-						/*btnn.setAttribute("style","font-size:14px;background-color: #09C;color:white;height:35px;width:80%;border-radius:10px;margin-top:10px");*/
 						btnn.setAttribute("class","buy_btnn");
 						btnn.innerHTML = "Buy Online";
 						iDiv.appendChild(btnn);
@@ -136,6 +141,7 @@ function loadMain() {
 					});
 
 				}
+				
 			});
             }
         };
