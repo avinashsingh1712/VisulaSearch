@@ -39,7 +39,7 @@ div.inline {
     float: left;
     border-left: 1px solid darkgrey;
     border-bottom: 1px solid darkgrey;
-    height: 265px;
+    height: 245px;
     width: 160px;
     text-align: center;
     margin-left: -1px;
@@ -54,6 +54,7 @@ div.inline {
     margin: 0px;
     padding-left:10px;
 }
+
 #mainDiv1{height:38px;width: 79%;float:left}
 #mainDiv1>button{
 	    padding: 5px;
