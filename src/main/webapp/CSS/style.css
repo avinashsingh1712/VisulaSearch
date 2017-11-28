@@ -39,7 +39,7 @@ div.inline {
     float: left;
     border-left: 1px solid darkgrey;
     border-bottom: 1px solid darkgrey;
-    height: 260px;
+    height: 265px;
     width: 160px;
     text-align: center;
     margin-left: -1px;
@@ -150,7 +150,7 @@ div.inline {
 	height:30px;
 	width:70%;
 	border-radius:15px;
-	margin-top:-5px;
+	margin-top:0px;
 	pointer-events: none;
 }
 ul {
