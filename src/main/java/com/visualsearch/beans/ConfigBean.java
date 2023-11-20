@@ -7,7 +7,7 @@ package com.visualsearch.beans;
 
 /**
  * 
- * @author avsin3
+ * @author avsin3 - Test123
  *
  */
 public class ConfigBean {
